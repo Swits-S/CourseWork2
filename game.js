@@ -168,6 +168,9 @@ class Bee {
         }
         let speed = document.getElementById("speedBears");
         speed.addEventListener('change', bear.setSpeed);
+        let beees = document.getElementById("nbees",makeBees());
+        beees.addEventListener('change',bees.makeBees
+        )
         //create new array for bees
         bees = new Array();
         //create bees
