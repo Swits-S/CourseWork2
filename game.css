@@ -9,7 +9,7 @@
 #board {
     position: absolute;
     height: 600px;
-    width: 1800px;
+    width: 1200px;
     background-image: url('./images/background.jpg');
     align-content: center;
     align-self: center;
