@@ -1,7 +1,7 @@
 # CourseWork2
 ## Description
 ### This is a js game with DOM api
-### The user controls a bear in board trying to avoid being stung by bees
+### The user controls a bear in a board trying to avoid being stung by bees
 #### This the github repository for wep programming CW2
 ### HWU details
 * username: Jag2001
