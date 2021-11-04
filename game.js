@@ -146,7 +146,7 @@ class Bee {
 
     function start() {
     //sets values of counters  and score
-        duration.innerHTML = "?";
+        duration.innerHTML = "0";
         hits.innerHTML = 0;
         //create bear
         bear = new Bear();
@@ -156,10 +156,9 @@ class Bee {
         bear.display();
         // Add an event listener to the keypress event.
         document.addEventListener("keydown", moveBear, false);
-        document.addEventListener("keydown",function(){duration.innerHTML = 0;} , false);
         document.getElementById("restart").onclick = function (){
             //resets values of counters  and score
-            duration.innerHTML = "?";
+            duration.innerHTML = "0";
             hits.innerHTML = 0;
             //resets the location of the bear
             bear.x = 0;
@@ -168,7 +167,7 @@ class Bee {
         }
         let speed = document.getElementById("speedBears");
         speed.addEventListener('change', bear.setSpeed);
-        )
+
         //create new array for bees
         bees = new Array();
         //create bees

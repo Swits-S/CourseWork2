@@ -10,15 +10,23 @@
     position: absolute;
     height: 600px;
     width: 1200px;
-    background-image: url('./images/background.jpg');
+    background:url(./images/Background.jpg) no-repeat fixed center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     align-content: center;
     align-self: center;
 }
 
 #title {
-    background-color: rgb(128, 128, 128);
     align-content: center;
     align-self: center;
+    background:url(./images/treeBackground.jpg) no-repeat fixed center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #scores {
@@ -37,4 +45,9 @@
 
 #duration {
     color: blue;
+}
+
+#beeGif, #bearGif {
+    width: 100px;
+    height: 100px;
 }
