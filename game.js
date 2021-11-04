@@ -1,32 +1,47 @@
+//function tht generates a random integer
 function getRandomInt(max) {
+    //sets the minimum value to 0
     let min = 0;
+    //returns a random value between min and max inclusive
     return Math.random() * (max - min) + min;
 }
 
+//bear / player method
 function Bear() {
+    //sets dbear to 100
     this.dBear = 100;
     this.htmlElement = document.getElementById("bear"); this.id = this.htmlElement.id;
     this.x = this.htmlElement.offsetLeft;
     this.y = this.htmlElement.offsetTop;
+    //sets the speed of the bear
     this.setSpeed = function(){
+        //sets speed to the value in element with id speedbears
         var speed = document.getElementById("speedBears").value;
+        //sets the speed to float of speed
         speed = parseFloat(speed);
+        //sets speed to speed /100
         speed = speed / 100;
+        //returns speed
         return speed;
 
     }
+    //moves the bear to certain coordinates
     this.move = function(xDir, yDir) {
         this.fitBounds(); //we add this instruction to keep bear within board
+        //sets bear x to dbear * speed * xDir
         this.x += this.dBear * this.setSpeed() *xDir;
+        //sets bear y to dbear * speed * yDir
         this.y += this.dBear * this.setSpeed() *yDir;
         this.fitBounds(); //we add this instruction to keep bear within board
         this.display();
     };
+    //displays the bear
     this.display = function() {
         this.htmlElement.style.left = this.x + "px";
         this.htmlElement.style.top = this.y + "px";
         this.htmlElement.style.display = "absolute";
     };
+    //ensures the bear does not leave the bounds of the board
     this.fitBounds = function() {
         let parent = this.htmlElement.parentElement;
         let iw = this.htmlElement.offsetWidth;
@@ -50,6 +65,7 @@ function Bear() {
     };
 }
 
+//function to create the bee images
 function createBeeImg(wNum) {
     //get dimension and position of board div
     let boardDiv = document.getElementById("board");
@@ -76,6 +92,7 @@ function createBeeImg(wNum) {
     return img;
 }
 
+//function that makes the bee objects
 function makeBees() {
     //get number of bees specified by the user
     let nbBees = document.getElementById("nbBees").value;
@@ -95,6 +112,7 @@ function makeBees() {
     }
 }
 
+//bee class with constructor for making bees
 class Bee {
     constructor(beeNumber) {
         //the HTML element corresponding to the IMG of the bee
@@ -105,12 +123,14 @@ class Bee {
         this.x = this.htmlElement.offsetLeft;
         //the top position (y)
         this.y = this.htmlElement.offsetTop;
+        //moves the bees
         this.move = function(dx, dy) {
             //move the bees by dx, dy
             this.x += dx;
             this.y += dy;
             this.display();
         };
+        //displays the bees
         this.display = function() {
             //adjust position of bee and display it
             this.fitBounds();//add this to adjust to bounds
@@ -119,6 +139,7 @@ class Bee {
             this.htmlElement.style.display = "block";
             this.fitBounds();//add this to adjust to bounds
         };
+        //ensures that bees dont leave the game board
         this.fitBounds = function() {
             //check and make sure the bees stays in the board space
             let parent = this.htmlElement.parentElement;
@@ -144,6 +165,7 @@ class Bee {
     }
 }
 
+    //starts the game
     function start() {
     //sets values of counters  and score
         duration.innerHTML = "0";
@@ -156,6 +178,7 @@ class Bee {
         bear.display();
         // Add an event listener to the keypress event.
         document.addEventListener("keydown", moveBear, false);
+        //checks if the element with id restart is clicked
         document.getElementById("restart").onclick = function (){
             //resets values of counters  and score
             duration.innerHTML = "0";
@@ -165,7 +188,9 @@ class Bee {
             bear.y = 0;
             bear.display();
         }
+        //sets speed to the element with id speedBears
         let speed = document.getElementById("speedBears");
+        //adds an event listener checking if the value changes
         speed.addEventListener('change', bear.setSpeed);
 
         //create new array for bees
@@ -183,16 +208,16 @@ function moveBear(e){
     const KEYDOWN = 40;
     const KEYLEFT = 37;
     const KEYRIGHT = 39;
-    if (e.keyCode == KEYRIGHT) {
+    if (e.keyCode === KEYRIGHT) {
         bear.move(1, 0)
     } // right key
-    if (e.keyCode == KEYLEFT) {
+    if (e.keyCode === KEYLEFT) {
         bear.move(-1, 0)
     } // left key
-    if (e.keyCode == KEYUP) {
+    if (e.keyCode === KEYUP) {
         bear.move(0, -1)
     } // up key
-    if (e.keyCode == KEYDOWN) {
+    if (e.keyCode === KEYDOWN) {
         bear.move(0, 1)
     } // down key
 }
@@ -217,7 +242,8 @@ function updateBees() { // update loop for game
     //update the timer for the next move
     if(parseInt(document.getElementById('hits').innerHTML) >= 1000){
         clearTimeout();
-        window.alert("Game Over!");
+        window.alert("Game Over! ");
+        window.alert("Your longest duration was: " + duration.innerHTML +"seconds");
     }else {
         updateTimer = setTimeout('updateBees()', period);
     }
@@ -260,8 +286,6 @@ function overlap(element1, element2) {
     y_intersect = Math.max(0, Math.min(bottom1, bottom2) - Math.max(top1, top2));
     intersectArea = x_intersect * y_intersect;
     //if intersection is nil no hit
-    if (intersectArea == 0 || isNaN(intersectArea)) {
-        return false;
-    }
-    return true;
+    return !(intersectArea == 0 || isNaN(intersectArea));
+
 }

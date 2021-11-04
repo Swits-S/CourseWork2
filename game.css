@@ -7,9 +7,19 @@
 }
 
 #board {
+    /*
+    position of the board is absolute
+    */
     position: absolute;
     height: 600px;
     width: 1200px;
+    /*
+    sets the background to background.jpg
+    ensures the image does not repeat
+    is in a fixed location and is centered
+    allows the image to be parallax
+    aligns itself and content center
+     */
     background:url(./images/Background.jpg) no-repeat fixed center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -20,6 +30,13 @@
 }
 
 #title {
+    /*
+    aligns thecontent and the image center\
+    sets the background to treeBackground.jpg
+    stops the image from repeating to fill the area
+    sets the image to fixed and center
+    allows the image to have parralax scrolling
+     */
     align-content: center;
     align-self: center;
     background:url(./images/treeBackground.jpg) no-repeat fixed center center;
@@ -46,7 +63,10 @@
 #duration {
     color: blue;
 }
-
+/*
+sets the beeGif and bearGif ids to width 100px
+and height 100px
+ */
 #beeGif, #bearGif {
     width: 100px;
     height: 100px;
